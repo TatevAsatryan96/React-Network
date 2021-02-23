@@ -1,0 +1,39 @@
+@import "~styles/root";
+
+.app-posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 24px 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  &_buttons{
+    padding: 10px;
+    margin: 20px;
+  }
+&_getmore{
+    bottom: 176px;
+    transition: all 1s ease-in-out;
+    box-shadow: 0px 0px 10px #47073f;
+}
+&_updatepost{
+    bottom: 176px;
+    transition: all 1s ease-in-out;
+    box-shadow: 0px 0px 10px #58084e;
+}
+&_createpost{
+    bottom: 176px;
+    transition: all 1s ease-in-out;
+    box-shadow: 0px 0px 10px #7e0c6f;
+}
+&_deletepost{
+    bottom: 176px;
+    transition: all 1s ease-in-out;
+    box-shadow: 0px 0px 10px #910c7f;
+}
+}
