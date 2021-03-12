@@ -7,22 +7,25 @@
   left: 0;
   width: 100%;
   height: $header-size;
-  background-color: #ddd;
-  box-shadow: 1px 1px 5px #eee;
+  background-color: rgb(182, 173, 173);
+  box-shadow: 1px 1px 5px rgb(197, 178, 178);
   display: flex;
+
   justify-content: center;
   align-items: center;
   @include media(mobile){
-    background-color: burlywood;;
+    background-color: rgb(170, 150, 125);;
   }
   ul{
-    display:block;;
+    display:flex;
     li{
-      margin:0,12px;
-      a{
-        text-decoration: none;
-        color:blueviolet
+      margin:0 70px;
+   a{
+     text-decoration: none;
+     &:hover{
+      font-size: 20px;
       }
+    }
     }
   }
 }

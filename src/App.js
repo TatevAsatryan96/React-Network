@@ -1,39 +1,34 @@
-  
-import React, { Component } from 'react';
-import {BrowserRouter,Route, Switch} from 'react-router-dom';
+import React, { Component } from "react";
+import {BrowserRouter} from "react-router-dom";
+// import { ToastContainer, toast } from 'react-toastify';
 
-import Header from 'components/Header/Header';
-import Layout from 'components/Layout/Layout';
-import Posts from 'containers/Posts/Posts';
-import HomePage from 'containers/HomePage/HomePage';
-import Todos from 'containers/Todo/Todo';
+import AppContextProvider from "Context/AppContextProvider";
+import AppRoutes from "Routes/AppRoutes";
+import Header from "components/Header/Header";
+import Layout from "components/Layout/Layout";
+
+// import 'react-toastify/dist/ReactToastify.css';
+
+
 export class App extends Component {
+  
   render() {
     return (
-      <div>  
-        <BrowserRouter>
+      <div>
+        <AppContextProvider >
+          <BrowserRouter>
             <Header />
             <Layout>
-              <Route exact path="/" component={HomePage}/>
-              <Route exact path="/posts" component={Posts}/>
-              <Route exact path="/todos" component={Todos}/>
-               
-              {/*  <Route exact path="/posts">  
-                     <Posts />
-               </Route>
-               < Route exact path="/todos">
-                    <Todos />
-                </Route>  
-                <Route exact path="/">
-                  <HomePage /> 
-                </Route>*/}
-                 
-              
-                
-              </Layout>  
+              <AppRoutes/>
+            </Layout>
           </BrowserRouter>
+        </AppContextProvider>
+        {/* <ToastContainer 
+          position = "top-right"
+          className = "app-toast"
+        /> */}
       </div>
-    )
+    );
   }
 }
 

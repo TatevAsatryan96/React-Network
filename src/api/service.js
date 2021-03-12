@@ -1,6 +1,6 @@
 class Service {
     constructor() {
-      this.baseUrl = "https://react-test-354b0-default-rtdb.firebaseio.com";
+      this.baseUrl = "https://react-learn-posts-default-rtdb.firebaseio.com";
     }
     _request = (method, url, data = null) => {
       return fetch(`${this.baseUrl}${url}.json`, {
