@@ -40,7 +40,7 @@ remove=()=>{} } ) => {
                 <p className="app-post_title">{post.title}</p>
                 <p className="app-post_body">{post.body}</p>
             </div>
-            
+                        
         </Wrapper>   
 
     )

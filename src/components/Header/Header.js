@@ -6,7 +6,7 @@ import { AppContext } from "Context/AppContext";
 
 import "./Header.scss";
 
-const headerNavLinks = [
+const headerLinks = [
   {
     title:"Homepage",
     to:"/"
@@ -18,6 +18,10 @@ const headerNavLinks = [
   {
     title:"Todos",
     to:"/todos"
+  },
+  {
+    title:"Auth",
+    to:"/auth"
   }
 ]
 
@@ -31,19 +35,13 @@ const Header = ()=>{
         <nav>
           <ul className = "app-header__ul">
             {
-              headerNavLinks.map(el => {
+              headerLinks.map(el => {
                 return(
                   <li key = {el.title}><Link to = {el.to}>{el.title}</Link></li>
                 )
               })
             }
-            {
-              !context.user ? (
-                <li key = 'auth'><Link to = '/auth'>Authentication</Link></li>
-              ) : (
-                <li key = 'profile'><Link to = '/profile'>Profile</Link></li>
-              )
-            }
+          
           </ul>
         </nav>
       </div>

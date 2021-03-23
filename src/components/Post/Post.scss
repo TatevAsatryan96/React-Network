@@ -2,7 +2,7 @@
 
 .app-post{
     padding: 20px;
-      border: 3px solid rgba(16, 94, 29, 0.582);
+      border: 3px solid rgba(204, 107, 183, 0.582);
     margin:auto 20px;
     &_title{
         font-size: 24px;
@@ -19,6 +19,6 @@
     .app-post-remove{
         font-size: 24px;
         font-weight: bold;
-        color: green;
+        color: rgb(224, 154, 215);
     }
 }

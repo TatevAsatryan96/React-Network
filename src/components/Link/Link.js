@@ -3,7 +3,7 @@ import {Link as RouterLink} from "react-router-dom";
 
 import './Link.scss';
 
-const Link = ({children,className,to}) => {
+const Link = ({children,to,className}) => {
     return (
        <RouterLink to = {to} className = {`app-link ${className}`}>
            {children}

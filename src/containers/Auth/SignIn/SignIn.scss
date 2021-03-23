@@ -1,0 +1,77 @@
+@import "~styles/root";
+$ruler: 16px;
+$color-red: #AE1100;
+$color-bg: #EBECF0;
+$color-shadow: #BABECC;
+$color-white: #FFF;
+.app-signIn{
+    display:inline-block;
+    align-items: center;
+    justify-content: center;
+
+&__img{
+    height: 100px;
+    width: 100px;
+background-color:  blueviolet;
+}
+   
+    
+    &__form{
+        height: 400px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        margin: auto 500px;
+        border:5px solid rgba(221, 160, 221, 0.445);
+        background-color: rgba(221, 160, 221, 0.336);
+        border-radius: 20px;
+    }
+
+    h1{
+        font-size: 32px;
+      
+        color:#7a1e6b;
+        letter-spacing: 4px;
+        margin-bottom: 64px;
+        text-align: center;
+    }
+    &__button, &__input {
+        border: 0;
+        outline: 0;
+        font-size: $ruler;
+        border-radius: $ruler*20;
+        padding: $ruler;
+        background-color:$color-bg;
+        text-shadow: 1px 1px 0 $color-white;
+      }
+     &__input {
+        margin-right: $ruler/2;
+        box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+        width: 100%;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+        appearance: none;
+        margin-bottom: 20px;
+        -webkit-appearance: none;}
+        &:focus {
+            box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+          }
+        
+        
+        &__button {
+          color:#61677C;
+          font-weight: bold;
+          box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+          transition: all 0.2s ease-in-out;
+          cursor: pointer;
+          font-weight: 600;
+          
+          &:hover {
+            box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+          }
+
+}
+}
+
+

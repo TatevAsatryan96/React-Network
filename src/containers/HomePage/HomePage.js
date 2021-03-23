@@ -1,23 +1,29 @@
 import React, { Component } from 'react'
-import postsMockup from'data-mockup/posts.mockup'
-import fbService from 'api/fbServise'
 
-export default class HomePage extends Component {
- /*componentDidMount(){
-     fetch('https://react-learn-posts-default-rtdb.firebaseio.com/posts.json',{
-         method:'PUT',
-         body:JSON.stringify(postsMockup.map(el=>({...el,id:el.id-1})))
-     })
+import {connect} from 'react-redux';
 
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-    }*/
+export class Homepage extends Component {
 
     render() {
         return (
             <div>
-                Home page
+                <button onClick = {this.props.incrementCount}>Increment</button>
+                <span>{this.props.count}</span>
+                <button onClick = {this.props.decrementCount}>Decrement</button>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state)=>{
+    return {
+        count:state.count
+    }
+}
+
+const mapDispatchToProps = {
+    incrementCount:()=>({type:'INCREMENT_COUNT'}),
+    decrementCount:()=>({type:'DECREMENT_COUNT'})
+}
+
+export default connect (mapStateToProps,mapDispatchToProps)(Homepage);

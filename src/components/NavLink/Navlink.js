@@ -5,7 +5,7 @@ import "./Navlink.scss";
 
 const NavLink = ({ children, to, className = "" }) => {
   return (
-    <RouterNavLink exact  activeClassName="app-nav-link--active" className={`app-nav-link ${className}`}to={to}>
+    <RouterNavLink exact to={to} activeClassName="selected" className={`app-nav-link ${className}`}>
       {children}
     </RouterNavLink>
   );

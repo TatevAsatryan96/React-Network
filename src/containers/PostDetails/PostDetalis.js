@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import Modal from '@material-ui/core/Modal';
-import { Button } from '@material-ui/core';
 
+
+import { AppContext } from 'Context/AppContext';
 import Post from 'components/Post/Post';
-import fbService from 'api/fbServise';
+import PostModal from 'components/PostModal/PostModal';
+import fbService from 'api/fbService';
 
-import './PostDetalis.scss';
+
+
+import load from "assets/load.gif";
+import { actionTypes } from 'Context/actionTypes';
+
 export class PostDetails extends Component {
 
     state = {
@@ -14,6 +19,8 @@ export class PostDetails extends Component {
         titleValue:'',
         bodyValue:''
     }
+
+    static contextType = AppContext;
 
     componentDidMount (){
         fbService.getPost(this.props.match.params.postId)
@@ -42,45 +49,55 @@ export class PostDetails extends Component {
             title:this.state.titleValue,
             body:this.state.bodyValue
         }).then(res=>{
+            const updatedPost = {...this.state.post, title:this.state.titleValue, body:this.state.bodyValue}
             this.setState({
-                post: {...this.state.post, title:this.state.titleValue, body:this.state.bodyValue},
+                post: updatedPost,
                 isEditModalOpen: false
             })
+            const {state:{posts}} = this.context;
+            if (posts && posts.find(el => el.id ===this.state.post.id)){
+                this.context.dispatch({type:actionTypes.UPDATE_POST, payload:{post:updatedPost}})
+            }
         })
         .catch(err =>{
             console.log(err);
             this.toggleCloseModal();
-          })
+        })
+        
+        
     }
 
-    changeTitle = (e)=>{
+    changeValue = (e)=>{
+        const {name,value} = e.target;
         this.setState({
-            titleValue:e.target.value
+            [name]:value
         })
     }
 
-    changeBody = (e)=>{
-        this.setState({
-            bodyValue:e.target.value
-        })
-    }
+
 
     render() {
         const {post,isEditModalOpen,titleValue,bodyValue} = this.state;
-      
+        if(!post){
+            return <div><img src ={load}></img></div>
+        }
         return (
             <div className = "app-postDetails">
                 <Post
                     post = {post}
                     edit = {this.toggleCloseModal}
                 />
-                <Modal open={isEditModalOpen} onClose={this.toggleCloseModal} className = "app-postDetails__modal">
-                    <div className = "app-postDetails__modal__edit">
-                        <input value = {titleValue} onChange = {this.changeTitle} className = "app-postDetails__input"/>
-                        <input value = {bodyValue} onChange = {this.changeBody} className = "app-postDetails__input"/>
-                        <Button variant="contained" color="primary" onClick = {this.savePost}>SAVE</Button>
-                    </div>
-                </Modal>
+                <PostModal
+                    action = {this.savePost}
+                    bodyValue = {bodyValue}
+                    titleValue = {titleValue}
+                    changeValue = {this.changeValue}
+                    isOpen = {isEditModalOpen}
+                    onClose = {this.toggleCloseModal}
+                    buttonTitle = "SAVE"
+
+                />
+                
             </div>
         )
     }

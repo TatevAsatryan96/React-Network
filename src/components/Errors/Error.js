@@ -1,6 +1,6 @@
 import React from 'react';
 
-import error from "assets/error.gif";
+import error from "assets/Error.svg.png";
 
 const Error = () => {
     return (

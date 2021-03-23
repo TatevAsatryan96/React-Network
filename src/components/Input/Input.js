@@ -1,35 +1,38 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "./Input.scss";
 
 const Input = ({
-    type='text', 
+    name = "",
+    type = "",
+    value,
     onChange,
-     value,
-      className=' ', 
-      loading=false,
-      placeholder
-    }) => {
-            return (
-                <Input
-                type={type}
-                    onChange={onChange}
-                    value={value}
-                    className={`app-Input  ${className}`}
-                    disaabledr={loading}
-                    placeholder={placeholder}
-                   />
-
-  )
+    loading = false,
+    placeholder ="",
+    className = ""
+}) => {
+    return (
+        <input
+            name = {name}
+            type = {type}
+            value = {value}
+            onChange = {onChange}
+            disabled = {loading}
+            placeholder = {placeholder}
+            className = {`app-input ${className}`} 
+        />
+    )
 }
-Input.propTypes={
+
+Input.propTypes = {
+    type:PropTypes.string,
     type:PropTypes.string,
     value:PropTypes.string.isRequired,
     onChange:PropTypes.func.isRequired,
-    className:PropTypes.string,
     loading:PropTypes.bool,
-    placeholder:PropTypes.string
+    placeholder:PropTypes.string,
+    className:PropTypes.string
 }
 
 export default Input;
